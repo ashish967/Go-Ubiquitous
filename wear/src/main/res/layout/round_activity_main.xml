@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/app_color"
+    tools:deviceIds="wear_round">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/tv_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textAllCaps="true"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:gravity="center" />
+
+
+    <View
+        android:layout_width="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/divider"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/divider_color"
+        android:layout_height="1dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="48dp"
+            android:id="@+id/iv_weather_icon"
+            android:src="@drawable/art_clouds"
+            android:layout_marginRight="16dp"
+            android:layout_height="48dp" />
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_temp_high_low"
+            android:textColor="@color/white"
+            android:text="23\u00b0 16\u00b0"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</LinearLayout>

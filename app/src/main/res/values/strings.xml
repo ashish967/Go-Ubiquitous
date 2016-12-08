@@ -235,5 +235,8 @@
     <string name="gcm_defaultSenderId" translatable="false"></string>
     <!-- For Google Places API Attributions -->
     <string name="attribution_text">Powered by Google</string>
+    <string name="pref_previous_min_temperature">min_temp</string>
+    <string name="pref_previous_max_temperature">max_temp</string>
+    <string name="pref_previous_weather_temperature">prev_weather</string>
 
 </resources>

@@ -19,15 +19,26 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.format.Time;
+import android.util.Log;
 
 import com.example.android.sunshine.app.sync.SunshineSyncAdapter;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.wearable.DataApi;
+import com.google.android.gms.wearable.PutDataMapRequest;
+import com.google.android.gms.wearable.PutDataRequest;
+import com.google.android.gms.wearable.Wearable;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import static android.R.attr.max;
 
 public class Utility {
     // We'll default our latlong to 0. Yay, "Earth!"
@@ -66,6 +77,8 @@ public class Utility {
                 context.getString(R.string.pref_units_metric))
                 .equals(context.getString(R.string.pref_units_metric));
     }
+
+
 
     public static String formatTemperature(Context context, double temperature) {
         // Data stored in Celsius by default.  If user prefers to see in Fahrenheit, convert
