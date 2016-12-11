@@ -1,4 +1,4 @@
-package com.example.android.sunshine.app.sync;
+package com.example.android.sunshine.app;
 
 import android.app.Service;
 import android.content.Context;
@@ -10,7 +10,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.example.android.sunshine.app.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
@@ -29,14 +28,13 @@ public class SunshineSyncWearable extends Service implements GoogleApiClient.Con
 
     GoogleApiClient mGoogleApiClient;
 
-    private static final String COUNT_PATH = "/count";
+    private static final String COUNT_PATH = "/update";
 
     private static final String MIN_TEMP_KEY = "com.example.key.min";
     private static final String MAX_TEMP_KEY = "com.example.key.max";
     private static final String WEATHER_KEY = "com.example.key.weather";
 
 
-    static  int count;
     public SunshineSyncWearable(){
 
         this(SunshineSyncWearable.class.getSimpleName());
@@ -95,19 +93,11 @@ public class SunshineSyncWearable extends Service implements GoogleApiClient.Con
         Log.d("SunshineWearable", "Connected ");
         Context context= getApplicationContext();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
-        final String previousMin=prefs.getString(context.getString(R.string.pref_previous_min_temperature),"");
-        final String previousMax= prefs.getString(context.getString(R.string.pref_previous_max_temperature),"");
-        final int previousWeather= prefs.getInt(context.getString(R.string.pref_previous_weather_temperature),-1);
-
-
         PutDataMapRequest putDataMapRequest = PutDataMapRequest.create(COUNT_PATH);
 
 
-        putDataMapRequest.getDataMap().putString(MIN_TEMP_KEY, previousMin);
-        putDataMapRequest.getDataMap().putString(MAX_TEMP_KEY, previousMax);
-        putDataMapRequest.getDataMap().putInt(WEATHER_KEY, previousWeather);
-        putDataMapRequest.getDataMap().putInt("COUNT_UPDATE",count++);
+        putDataMapRequest.getDataMap().putString("abc", "update");
+
 
         PutDataRequest request = putDataMapRequest.asPutDataRequest();
 
@@ -124,7 +114,7 @@ public class SunshineSyncWearable extends Service implements GoogleApiClient.Con
                                     + dataItemResult.getStatus().getStatusCode());
                         }
                         else{
-                            Log.e("Utility","Data put successfuly " +previousMax+" , "+previousMin+" "+previousWeather);
+                            Log.e("Utility","Data put successfuly");
                         }
                     }
                 });
